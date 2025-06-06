@@ -10,6 +10,7 @@ services:
     image: judge0/judge0:1.13.1
     volumes:
       - ./judge0.conf:/judge0.conf:ro
+      - box:/box  
     ports:
       - "2358:2358"
     privileged: true
@@ -20,7 +21,8 @@ services:
     image: judge0/judge0:1.13.1
     command: ["./scripts/workers"]
     volumes:
-      - ./judge0.conf:/judge0.conf:ro
+     - ./judge0.conf:/judge0.conf:ro
+     - box:/box  
     privileged: true
     <<: *default-logging
     restart: always
@@ -45,3 +47,4 @@ services:
 
 volumes:
   data:
+  box:
